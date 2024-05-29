@@ -21,7 +21,6 @@ public class WeightedGraph<Vertex> {
     public void addEdge(Vertex source, Vertex dest, double weight) {
         addVertex(source);
         addVertex(dest);
-
         if (source.equals(dest) || hasEdge(source, dest)) return;
 
         map.get(source).add(new Edge<>(source, dest, weight));
@@ -44,7 +43,7 @@ public class WeightedGraph<Vertex> {
     }
 
     public boolean hasEdge(Vertex source, Vertex dest) {
-        return hasVertex(source) && map.get(source).contains(new Edge<>(source, dest));
+        return map.containsKey(source) && map.get(source).contains(new Edge<>(source, dest));
     }
 
     public List<Vertex> adjacencyList(Vertex v) {
@@ -57,6 +56,6 @@ public class WeightedGraph<Vertex> {
     }
 
     public Iterable<Edge<Vertex>> getEdges(Vertex v) {
-        return hasVertex(v) ? map.get(v) : Collections.emptyList();
+        return map.getOrDefault(v, Collections.emptyList());
     }
 }

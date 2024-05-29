@@ -42,7 +42,7 @@ public class DijkstraSearch<Vertex> extends Search<Vertex> {
                 return edge.getWeight();
             }
         }
-        throw new RuntimeException("com.company.Edge not found");
+        throw new RuntimeException("Edge not found");
     }
 
     private Vertex getVertexWithMinimumWeight(Set<Vertex> vertices) {

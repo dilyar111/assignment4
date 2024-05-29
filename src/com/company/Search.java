@@ -3,30 +3,27 @@ package com.company;
 import java.util.*;
 
 public class Search<Vertex> {
-    protected Set<Vertex> marked;
-    protected Map<Vertex, Vertex> edgeTo;
+    protected Set<Vertex> marked = new HashSet<>();
+    protected Map<Vertex, Vertex> edgeTo = new HashMap<>();
     protected final Vertex source;
 
     public Search(Vertex source) {
         this.source = source;
-        marked = new HashSet<>();
-        edgeTo = new HashMap<>();
     }
 
     public boolean hasPathTo(Vertex v) {
         return marked.contains(v);
     }
 
-    public Iterable<Vertex> pathTo(Vertex v) {
-        if (!hasPathTo(v)) return null;
+    public List<Vertex> pathTo(Vertex v) {
+        if (!hasPathTo(v)) return Collections.emptyList();
 
-        LinkedList<Vertex> ls = new LinkedList<>();
+        List<Vertex> path = new LinkedList<>();
         for (Vertex i = v; i != source; i = edgeTo.get(i)) {
-            ls.push(i);
+            path.add(0, i);
         }
+        path.add(0, source);
 
-        ls.push(source);
-
-        return ls;
+        return path;
     }
 }
