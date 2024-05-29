@@ -1,3 +1,5 @@
+package com.company;
+
 import java.util.*;
 
 public class Search<Vertex> {
@@ -20,7 +22,7 @@ public class Search<Vertex> {
 
         LinkedList<Vertex> ls = new LinkedList<>();
         for (Vertex i = v; i != source; i = edgeTo.get(i)) {
-            ls.push(i); // inverted adding
+            ls.push(i);
         }
 
         ls.push(source);

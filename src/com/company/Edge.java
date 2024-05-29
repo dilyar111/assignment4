@@ -1,4 +1,4 @@
-import java.util.Objects;
+package com.company;
 
 public class Edge<Vertex> {
     private Vertex source;
@@ -42,13 +42,13 @@ public class Edge<Vertex> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true; // references compared
+        if (this == o) return true;
 
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || !(o instanceof Edge)) return false;
 
         Edge<?> otherEdge = (Edge<?>) o;
 
-        return Objects.equals(this.source, otherEdge.source) &&
-                Objects.equals(this.dest, otherEdge.dest);
+        return this.source.equals(otherEdge.source) && this.dest.equals(otherEdge.dest);
     }
+
 }
